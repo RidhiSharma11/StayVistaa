@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayVistaa</title>
+</head>
+<body>
+    <form method="POST" action="/listings">
+        <input name= "listing[title]" placeholder= "Title" type="text"/>
+        <br/><br/>
+        <textarea name= "listing[description]" placeholder= "Description"></textarea>
+        <br/><br/>
+        <input name= "listing[image]" placeholder= "Image URL/Link" type="text"/>
+        <br/><br/>
+        <input name= "listing[price]" placeholder= "Price" type="number"/>
+        <br/><br/>
+        <input name= "listing[country]" placeholder= "Country" type="text"/>
+        <br/><br/>
+        <input name= "listing[location]" placeholder= "Location" type="text"/>
+        <br/><br/>
+        <button>Add</button>     
+    </form>
+</body>
+</html>
