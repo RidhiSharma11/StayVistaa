@@ -1,47 +1,116 @@
 <% layout("/layouts/boilerplate") %>
-<div class="row mt-3">
-    <div class="col-8 offset-2">
-<h3>Edit your Listing</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
-        <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input name= "listing[title]" value= "<%= listing.title %>" type="text" class="form-control" required/>
-        <div class="invalid-feedback">Title should not be empty</div>
-        </div>
 
-        <div class="mb-3">
-        <label for="description" class="form-label">Description</label>    
-        <textarea name= "listing[description]" class="form-control" required><%= listing.description %></textarea>
-         <div class="invalid-feedback">Description should be valid</div>
-        </div>
+<% layout("/layouts/boilerplate") %>
 
-        <div class="mb-3">
-        <label for="image" class="form-label">Image</label>    
-        <input name= "listing[image][url]" value="<%= listing.image.url %>" type="text" class="form-control" required />
-        </div>
+<style>
 
-        <div class="row">
-        <div class="mb-3 col-md-4">
-        <label for="price" class="form-label">Price</label>
-        <input name= "listing[price]" value="<%= listing.price %>" type="number" class="form-control" required/>
-        <div class="invalid-feedback">Price should be valid</div>
-        </div>
+.edit-page{
+  min-height:100vh;
+  background-image:url("https://thumbs.dreamstime.com/b/idyllic-summer-landscape-clear-mountain-lake-alps-45054687.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 
-        <div class="mb-3 col-md-8">
-        <label for="country" class="form-label">Country</label>           
-        <input name= "listing[country]" value="<%= listing.country %>" type="text" class="form-control" required/>
-        <div class="invalid-feedback">Country name should be valid</div>
-        </div>
-        </div>
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-        <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
-        <input name= "listing[location]" value="<%= listing.location %>" type="text" class="form-control" required/>
-        <div class="invalid-feedback">Location should be valid</div>
-        </div>
-        <button class="btn btn-dark edit-btn mt-3">Edit</button>
-        <br><br>
-    </form>
+.form-card{
+  width:420px;
+  padding:30px;
+  background:rgba(255,255,255,0.95);
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.form-title{
+  font-weight:700;
+  text-align:center;
+}
+
+.form-control{
+  padding:8px 12px;
+  font-size:14px;
+}
+
+.form-control:focus{
+  border-color:#D4AF37;
+  box-shadow:0 0 6px rgba(212,175,55,0.4);
+}
+
+.edit-btn{
+  background: linear-gradient(135deg,#66bb6a,#43a047);
+  border:none;
+  color:white;
+}
+
+.edit-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+</style>
+
+
+<div class="edit-page">
+
+<div class="form-card">
+
+<h2 class="form-title mb-4">Edit Listing</h2>
+
+<form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+
+<div class="mb-3">
+<label class="form-label">Title</label>
+<input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required/>
+<div class="invalid-feedback">Title should not be empty</div>
 </div>
+
+
+<div class="mb-3">
+<label class="form-label">Description</label>
+<textarea name="listing[description]" class="form-control" required><%= listing.description %></textarea>
+<div class="invalid-feedback">Description should be valid</div>
 </div>
-<script src = "/js/script.js"></script>
+
+
+<div class="mb-3">
+<label class="form-label">Image</label>
+<input name="listing[image][url]" value="<%= listing.image.url %>" type="text" class="form-control" required />
+</div>
+
+
+<div class="row">
+
+<div class="mb-3 col-md-4">
+<label class="form-label">Price</label>
+<input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required/>
+<div class="invalid-feedback">Price should be valid</div>
+</div>
+
+<div class="mb-3 col-md-8">
+<label class="form-label">Country</label>
+<input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required/>
+<div class="invalid-feedback">Country name should be valid</div>
+</div>
+
+</div>
+
+
+<div class="mb-3">
+<label class="form-label">Location</label>
+<input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required/>
+<div class="invalid-feedback">Location should be valid</div>
+</div>
+
+
+<button class="btn edit-btn mt-3">Update Listing</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="/js/script.js"></script>

@@ -1,6 +1,71 @@
+<style>
+.container-fluid{
+  background:white;
+  padding:10px 40px;
+}
+.navbar{
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+
+.navbar-brand img{
+  margin-right:25px;
+}
+
+.nav-link{
+  margin-left:18px;
+  font-weight:900;
+  color:#333;
+  transition:0.3s;
+}
+
+.nav-link:hover{
+  color:#D4AF37;
+  opacity:0.7;
+   font-size:20px;
+  text-decoration-line:underline;
+}
+
+.search-bar{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-left:30px;
+}
+
+.search-bar input{
+  border:1px solid #ddd;
+  padding:8px 16px;
+  border-radius:25px;
+  outline:none;
+  width:260px;
+  transition:0.3s;
+}
+
+.search-bar input:focus{
+  border-color:#D4AF37;
+  box-shadow:0 0 6px rgba(212,175,55,0.3);
+}
+
+.search-bar button{
+  background:#FFD700;
+  border:none;
+  padding:8px 18px;
+  border-radius:25px;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.search-bar button:hover{
+  background:#27ae60;
+  transform:translateY(-1px);
+}
+</style>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-brands fa-airbnb"></i></a>
+    <a class="navbar-brand logo" href="/">
+     Elite<span>Vistaa</span>
+     </a>
     <button class="navbar-toggler" 
      type="button" 
      data-bs-toggle="collapse" 
@@ -9,9 +74,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listing</a>
-        <a class="nav-link" href="/listings/new">Add new Listing</a>
+        <a class="nav-link" href="/listings">Explore<span style="color: red;">&#10084;</span></a>
+      </div>
+
+     <form action="/listings" method="GET" class="search-bar">
+     <input 
+      type="text" 
+      name="location" 
+      placeholder="Search destinations (e.g., Goa, Delhi)" >
+     <button type="submit">Search</button>
+     </form>
+
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">List Your Property</a>
+        <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+        <a class="nav-link" href="/login"><b>Log in</b></a>
+        <!-- <a class="nav-link" href="/logout">Log out</a> -->
       </div>
     </div>
   </div>

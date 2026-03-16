@@ -1,53 +1,114 @@
 <% layout("/layouts/boilerplate") %>
-<div class="row mt-3">
-    <div class="col-8 offset-2">
-        <br><br>
-    <h3>Create new Listing</h3>
-    <form method="POST" action="/listings" novalidate class="needs-validation">
-        <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input name= "listing[title]" placeholder= "Add a catchy title" type="text" class="form-control" required/>
-        <div class="valid-feedback">Title looks good!</div>
-        <div class="invalid-feedback">Title should not be empty</div>
-        </div>
+
+<style>
+
+.create-page{
+  min-height:100vh;
+  background-image:url("https://printawallpaper.com/wp-content/uploads/2020/07/beach_scene_d.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.form-card{
+  width:420px;
+  padding:30px;
+  background:rgba(255,255,255,0.95);
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.form-title{
+  font-weight:700;
+  text-align:center;
+}
+
+.form-control{
+  padding:8px 12px;
+  font-size:14px;
+}
+
+.form-control:focus{
+  border-color:#D4AF37;
+  box-shadow:0 0 6px rgba(212,175,55,0.4);
+}
+
+.add-btn{
+  background:linear-gradient(135deg,#FFD700,#D4AF37);
+  border:none;
+  padding:10px 24px;
+  border-radius:30px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.add-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+</style>
 
 
-        <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea
-         name= "listing[description]" 
-         class="form-control" required></textarea>
-        <div class="invalid-feedback">Description should be valid</div>
-        </div>
+<div class="create-page">
 
-        <div class="mb-3">
-        <label for="image" class="form-label">Image Link</label>
-        <input name= "listing[image]" placeholder= "enter Image URL/Link" type="text" class="form-control" required/>
-        </div>
+<div class="form-card">
 
-        <div class="row">
-        <div class="mb-3 col-md-4">
-        <label for="price" class="form-label">Price</label>
-        <input name= "listing[price]" placeholder= "1200" class="form-control" required/>
-        <div class="invalid-feedback">Price should be valid</div>
-        </div>
+<h2 class="form-title mb-4">Create New Listing</h2>
 
-        <div class="mb-3 col-md-8">
-        <label for="country" class="form-label">Country</label>
-        <input name= "listing[country]" placeholder= "India" type="text" class="form-control" required/>
-        <div class="invalid-feedback">Country name should be valid</div>
-        </div>
-        </div>
+<form method="POST" action="/listings" novalidate class="needs-validation">
 
-        <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
-        <input name= "listing[location]" placeholder= "Jaipur,Rajasthan" type="text" class="form-control" required/>
-        <div class="invalid-feedback">Location should be valid</div>
-        </div>
+<div class="mb-3">
+<label class="form-label">Title</label>
+<input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control" required/>
+<div class="valid-feedback">Title looks good!</div>
+<div class="invalid-feedback">Title should not be empty</div>
+</div>
 
-        <br>
-        <button class="btn btn-dark add-btn mt-3">Add</button>     
-        <br><br>
-    </form>
-    </div>
+
+<div class="mb-3">
+<label class="form-label">Description</label>
+<textarea name="listing[description]" class="form-control" required></textarea>
+<div class="invalid-feedback">Description should be valid</div>
+</div>
+
+
+<div class="mb-3">
+<label class="form-label">Image Link</label>
+<input name="listing[image][url]" placeholder="Enter Image URL/Link" type="text" class="form-control" required/>
+</div>
+
+
+<div class="row">
+<div class="mb-3 col-md-4">
+<label class="form-label">Price</label>
+<input name="listing[price]" placeholder="1200" class="form-control" required/>
+<div class="invalid-feedback">Price should be valid</div>
+</div>
+
+<div class="mb-3 col-md-8">
+<label class="form-label">Country</label>
+<input name="listing[country]" placeholder="India" type="text" class="form-control" required/>
+<div class="invalid-feedback">Country name should be valid</div>
+</div>
+</div>
+
+
+<div class="mb-3">
+<label class="form-label">Location</label>
+<input name="listing[location]" placeholder="Jaipur, Rajasthan" type="text" class="form-control" required/>
+<div class="invalid-feedback">Location should be valid</div>
+</div>
+
+
+<button class="btn add-btn mt-3">Add Listing</button>
+
+</form>
+
+</div>
+
 </div>

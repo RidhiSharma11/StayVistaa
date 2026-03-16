@@ -31,26 +31,44 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname,"public")));
 
-app.get("/",(req,res)=>{
-    res.send("Hey! I am the root");
-});
+app.get("/", wrapAsync(async (req, res) => {
+  const featured = await Listing.find({}).limit(3);
+  res.render("listings/home.ejs", { featured });
+}));
 
 const validateListing = (req,res,next) =>{
   let {error} = listingSchema.validate(req.body);
   if(error){
     let errMsg = error.details.map((el)=>el.message).join(",");
-    throw new expressError(400,result.error);
+    throw new expressError(400, errMsg);
   }
   else{
     next();
   }
 };
 
-//Index Route
+// Index Route
 app.get("/listings",wrapAsync(async(req,res)=>{
   const allListings = await Listing.find({});
   res.render("listings/index.ejs",{allListings});
 }));
+
+app.get("/login",(req,res)=>{
+res.render("listings/login.ejs");
+});
+
+app.get("/signup",(req,res)=>{
+res.render("listings/signup.ejs");
+});
+
+app.post("/signup", async (req,res)=>{
+   res.redirect("/");  
+});
+
+
+app.post("/login", async (req,res)=>{
+   res.redirect("/"); 
+});
 
 //New Route
 app.get("/listings/new",wrapAsync(async(req,res)=>{
@@ -129,3 +147,4 @@ app.listen(6060,()=>{
 //   console.log("Database was saved");
 //   res.send("Successful Testing");
 // });
+
