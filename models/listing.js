@@ -6,7 +6,7 @@ const Review = require("./review.js");
 const listSchema=new Schema({
     title:{
         type:String,
-        default:true,
+        required:true
     },
     description:String,
 image: {
@@ -23,12 +23,33 @@ image: {
     price:Number,
     location:String,
     country:String,
+
+      category: {
+    type: String,
+    enum: [
+      "trending",
+      "room",
+      "cities",
+      "pools",
+      "mountains",
+      "camping",
+      "farms",
+      "snow",
+      "ships",
+      "domes"
+    ]
+  },
+
     reviews: [
       {
         type:Schema.Types.ObjectId,
         ref:"Review"
       },
     ],
+    owner: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User"
+}
 });
 
 // listingSchema.post("findOneAndDelete",async(listing)=>{
